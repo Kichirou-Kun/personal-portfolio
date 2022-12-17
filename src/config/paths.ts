@@ -4,6 +4,7 @@ export const PATHS = {
   SKILLS: "/#skills",
   PROJECTS: "/#projects",
   CONTACT: "/#contact",
+  DASHBOARD: "/admin",
 };
 
 export const AUTHS = {

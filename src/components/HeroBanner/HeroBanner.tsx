@@ -50,7 +50,7 @@ const HeroBanner = () => {
                   size="large"
                   className="mt-6 bg-gradient-to-r from-[#619BFD] to-[#A17CF9] text-white transition-opacity duration-150 ease-linear hover:bg-opacity-90"
                 >
-                  Download
+                  Download CV
                 </Button>
               </NextLink>
             </motion.div>

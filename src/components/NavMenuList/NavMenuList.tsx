@@ -1,5 +1,6 @@
 import NavMenu from "@components/NavMenu/NavMenu";
 import { PATHS } from "@config/paths";
+import { useAuth } from "@context/AuthContext/AuthContext";
 import Stack from "@ui/Stack";
 import clsx from "clsx";
 import React from "react";
@@ -8,6 +9,7 @@ interface Props {
   direction?: "row" | "column";
 }
 const NavMenuList = ({ direction = "row" }: Props) => {
+  const { user } = useAuth();
   return (
     <Stack
       className={clsx({
@@ -25,6 +27,12 @@ const NavMenuList = ({ direction = "row" }: Props) => {
       <NavMenu title="PROJECTS" href={PATHS.PROJECTS} />
       {direction === "column" && <span className="border border-gray-700" />}
       <NavMenu title="CONTACT" href={PATHS.CONTACT} />
+      {user &&
+        user.email === "aungnyeinhtet21@gmail.com" &&
+        direction === "column" && <span className="border border-gray-700" />}
+      {user && user.email === "aungnyeinhtet21@gmail.com" && (
+        <NavMenu title="DASHBOARD" href={PATHS.DASHBOARD} />
+      )}
     </Stack>
   );
 };

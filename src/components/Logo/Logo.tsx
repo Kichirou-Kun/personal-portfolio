@@ -5,16 +5,15 @@ import { useUI } from "@context/UIContext/UIContext";
 interface Props {
   className?: string;
   size?: "medium" | "small" | "large";
-  href: "/" | "/admin" | string;
 }
-const Logo = ({ className, href, size = "medium" }: Props) => {
+const Logo = ({ className, size = "medium" }: Props) => {
   const { setCloseSidebar, setCloseAdmin } = useUI();
   const closeSidebarHandler = () => {
     setCloseSidebar();
     setCloseAdmin();
   };
   return (
-    <NextLink href={href}>
+    <NextLink href={`/`}>
       <div
         onClick={closeSidebarHandler}
         className={clsx(

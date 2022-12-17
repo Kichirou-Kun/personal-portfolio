@@ -22,9 +22,10 @@
       "@config/*": ["src/config/*"],
       "@context/*": ["src/context/*"],
       "@lib/*": ["src/lib/*"],
+      "@utils/*": ["src/utils/*"],
       "@admin/*": ["src/Admin/*"],
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/database/connect.js", "src/database/controller.js", "src/pages/api/users/index.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/database/connect.js", "src/database/controller.js", "src/pages/api/users/index.ts", "src/Admin/components/UserTable/UserTable.js"],
   "exclude": ["node_modules"]
 }

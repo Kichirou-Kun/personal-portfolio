@@ -47,7 +47,7 @@ const Button = React.forwardRef<HTMLButtonElement, Props>(
       fullWidth && "w-full",
       "uppercase rounded font-semibold",
       disabled &&
-        "bg-gray-600 bg-opacity-40 text-gray-400 border-transparent pointer-events-none",
+        "bg-gray-600 bg-opacity-40 text-gray-400 border-transparent cursor-not-allowed",
       {
         ["px-2 py-1"]: size === "small",
         ["px-4 py-2"]: size === "medium",

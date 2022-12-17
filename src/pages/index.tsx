@@ -5,6 +5,7 @@ import ContactSection from "@components/ContactSection";
 import HeroBanner from "@components/HeroBanner";
 import ProjectsSectioin from "@components/ProjectsSection/ProjectsSectioin";
 import SkillsSection from "@components/SkillsSection";
+import { useAuth } from "@context/AuthContext/AuthContext";
 
 import { InferGetStaticPropsType } from "next";
 import React from "react";
@@ -17,6 +18,8 @@ export const getStaticProps = async () => {
   };
 };
 const HomePage = () => {
+  const { user } = useAuth();
+
   return (
     <>
       <BaseSeo />

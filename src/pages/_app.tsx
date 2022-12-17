@@ -4,6 +4,10 @@ import type { AppProps } from "next/app";
 import "../../styles/globals.css";
 import NextNProgress from "@components/NextNProgress";
 import { UIContextProvider } from "@context/UIContext/UIContext";
+import { AuthContextProvider } from "@context/AuthContext/AuthContext";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "../../styles/globals.css";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -18,8 +22,11 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
 
   return (
-    <UIContextProvider>
-      <NextNProgress /> {getLayout(<Component {...pageProps} />)}
-    </UIContextProvider>
+    <AuthContextProvider>
+      <UIContextProvider>
+        <NextNProgress /> {getLayout(<Component {...pageProps} />)}
+        <ToastContainer hideProgressBar theme="dark" position="bottom-right" />
+      </UIContextProvider>
+    </AuthContextProvider>
   );
 }

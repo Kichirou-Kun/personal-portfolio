@@ -17,7 +17,7 @@ const ProjectsSectioin = () => {
         <Grid container>
           <Grid item className="col-span-12 lg:col-span-6">
             <motion.div
-              initial={{ scale: 0, opacity: 0 }}
+              initial={{ scale: 0.5, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
               transition={{ duration: 1.2 }}
               className="group relative h-[500px] w-full cursor-pointer overflow-hidden rounded-md"

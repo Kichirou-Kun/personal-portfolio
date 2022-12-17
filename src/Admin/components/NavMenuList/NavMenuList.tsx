@@ -1,4 +1,4 @@
-import { ADMIN_AUTHS } from "@config/paths";
+import { ADMIN_AUTHS, PATHS } from "@config/paths";
 import Stack from "@ui/Stack";
 import clsx from "clsx";
 import React from "react";
@@ -15,6 +15,7 @@ const NavMenuList = ({ direction = "row" }: Props) => {
       })}
       direction={direction}
     >
+      <NavMenu title="DASHBOARD" href={PATHS.DASHBOARD} />
       <NavMenu title="HERO" href={ADMIN_AUTHS.HERO} />
       <NavMenu title="ABOUT" href={ADMIN_AUTHS.ABOUT} />
       <NavMenu title="SKILLS" href={ADMIN_AUTHS.SKILLS} />

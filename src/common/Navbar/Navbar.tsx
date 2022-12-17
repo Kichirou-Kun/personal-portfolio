@@ -31,7 +31,7 @@ const Navbar = ({ transparent = false }: Props) => {
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 1 }}
           >
-            <Logo href="/" />
+            <Logo />
           </motion.div>
           <motion.div
             initial={{ scale: 0, opacity: 0 }}
