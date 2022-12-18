@@ -36,7 +36,7 @@ const FrontLayout: React.FC<PropsWithChildren<Props>> = ({
 }) => {
   return (
     <div className="relative flex h-screen flex-col justify-between bg-BODY_BG">
-      <header className="fixed top-0 left-0 z-50 w-full">
+      <header className="fixed top-0 left-0 z-20 w-full">
         <Navbar {...NavbarProps} />
       </header>
 

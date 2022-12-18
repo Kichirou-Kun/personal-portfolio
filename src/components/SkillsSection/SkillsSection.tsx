@@ -1,15 +1,18 @@
 import Title from "@components/Title";
-import { skills } from "@config/dummyDatas";
 import Container from "@ui/Container";
 import Grid from "@ui/Grid";
 import Typography from "@ui/Typography";
 import NextImage from "next/legacy/image";
 import React from "react";
 import { motion } from "framer-motion";
+import { skillsDataType } from "src/types/dataTypes";
 
-const SkillsSection = () => {
+interface Props {
+  skills: skillsDataType[];
+}
+const SkillsSection = ({ skills }: Props) => {
   return (
-    <section className="bg-BODY_BG pt-32" id="skills">
+    <section className="overflow-x-hidden bg-BODY_BG pt-32 " id="skills">
       <Container>
         <Title title="skills" text="What I can Do" />
         <Grid container className="gap-6">
@@ -27,7 +30,7 @@ const SkillsSection = () => {
                   className="h-[50px] w-[50px]"
                 >
                   <NextImage
-                    src={skill.image}
+                    src={skill?.imageURL}
                     alt="html"
                     width={50}
                     height={50}
@@ -44,7 +47,7 @@ const SkillsSection = () => {
                     variant="h6"
                     className="text-lg font-semibold uppercase text-SECONDARY_COLOR"
                   >
-                    {skill.text}
+                    {skill?.technologires}
                   </Typography>
                 </motion.div>
               </div>

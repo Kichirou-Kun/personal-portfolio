@@ -5,4 +5,7 @@ module.exports = {
     defaultLocale: "en-US",
   },
   reactStrictMode: true,
+  images: {
+    domains: ["firebasestorage.googleapis.com"],
+  },
 };

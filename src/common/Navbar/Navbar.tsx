@@ -19,9 +19,10 @@ const Navbar = ({ transparent = false }: Props) => {
   return (
     <div
       className={clsx(
-        "bg-BODY_BG py-10",
-        y > WINDOW_SCROLL_SIZE &&
-          "shadow-xl transition-shadow duration-200 ease-in-out"
+        "z-40 py-10",
+        y > WINDOW_SCROLL_SIZE
+          ? "bg-BODY_BG shadow-xl transition-shadow duration-200 ease-in-out"
+          : "bg-BODY_BG"
       )}
     >
       <Container>

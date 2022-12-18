@@ -1,9 +1,9 @@
 import { firestore } from "firebase.config";
 import { doc, setDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
-import { HeroDataType } from "src/types/heroType";
+import { aboutDataType } from "src/types/dataTypes";
 
-export const saveAboutPost = async (data: HeroDataType) => {
+export const saveAboutPost = async (data: aboutDataType) => {
   await setDoc(doc(firestore, "aboutSection", `${Date.now()}`), data, {
     merge: true,
   });

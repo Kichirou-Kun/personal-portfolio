@@ -3,7 +3,6 @@ import { XMarkIcon } from "@heroicons/react/24/solid";
 import Button from "@ui/Button";
 import IconButton from "@ui/IconButton";
 import React from "react";
-import NextLink from "next/link";
 import NavMenuList from "../NavMenuList";
 import { useAuth } from "@context/AuthContext/AuthContext";
 import { useRouter } from "next/router";

@@ -41,7 +41,7 @@ const UserTable = () => {
                   1.
                 </td>
                 <td className="text-md whitespace-nowrap  py-4 text-SECONDARY_COLOR">
-                  {user.uid}
+                  {user.id}
                 </td>
                 <td className="text-md whitespace-nowrap  py-4 text-SECONDARY_COLOR">
                   {user.email}

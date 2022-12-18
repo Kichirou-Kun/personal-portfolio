@@ -1,7 +1,7 @@
 import { firestore } from "firebase.config";
 import { doc, setDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
-import { HeroDataType } from "src/types/heroType";
+import { HeroDataType } from "src/types/dataTypes";
 
 export const saveContactPost = async (data: HeroDataType) => {
   await setDoc(doc(firestore, "contactSection", `${Date.now()}`), data, {

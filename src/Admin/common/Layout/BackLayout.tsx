@@ -1,11 +1,9 @@
 import Sidebar from "@admin/components/Sidebar";
 import Footer from "@common/Footer";
-import FrontLayout from "@common/FrontLayout";
 import BaseSeo from "@components/BaseSeo";
 import { useAuth } from "@context/AuthContext/AuthContext";
 import { useUI } from "@context/UIContext/UIContext";
 import Button from "@ui/Button";
-import Container from "@ui/Container";
 import Drawer from "@ui/Drawer";
 import { useRouter } from "next/router";
 import React from "react";

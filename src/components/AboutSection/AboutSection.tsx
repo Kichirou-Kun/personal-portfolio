@@ -1,19 +1,23 @@
 import Title from "@components/Title";
 import { NEXT_IMAGE_QUALITY } from "@config/app";
 import Container from "@ui/Container";
-import Grid from "@ui/Grid";
 import Typography from "@ui/Typography";
 import NextImage from "next/legacy/image";
 import React from "react";
-import about from "../../../public/assets/about/about.jpg";
 import { motion } from "framer-motion";
+import { aboutDataType } from "src/types/dataTypes";
+import { useWindowSize } from "react-use";
 
-const AboutSection = () => {
+interface Props {
+  about: aboutDataType;
+}
+const AboutSection = ({ about }: Props) => {
+  const { width } = useWindowSize();
   return (
-    <section className="pt-32" id="about">
+    <section className="overflow-x-hidden pt-32 " id="about">
       <Container>
-        <Grid container className="gap-10 lg:gap-6">
-          <Grid item className="col-span-12 lg:col-span-6">
+        <div className="flex flex-col justify-between gap-6 lg:flex-row">
+          <div className="flex w-full flex-col justify-center lg:w-[55%]">
             <Title title="About" text="Who I Am" />
             <motion.div
               initial={{ x: -200, opacity: 0 }}
@@ -21,44 +25,37 @@ const AboutSection = () => {
               transition={{ duration: 1.2 }}
             >
               <Typography variant="h5" className="mb-3 text-white">
-                // I Am Not Your Normal Developer
+                {about?.text}
               </Typography>
               <Typography className="mb-6 text-lg text-SECONDARY_COLOR">
-                I have spent the last 3years in the Shwe Than Lwin Media Co.,Ltd
-                as a translator.I started interseted in programming. in 2020 I
-                started learning with HTML CSS Javascript from Msquare
-                Programming youtube channel.
+                {about?.description1}
               </Typography>
-              <Typography className="text-lg text-SECONDARY_COLOR">
-                Fascinated with how intricate programming can be I was quickly
-                drawn to learn more.I am now spending my time building projects
-                with React JS,NextJs and new technologies
+              <Typography className="R text-lg text-SECONDARY_COLOR">
+                {about?.description2}
               </Typography>
             </motion.div>
-          </Grid>
-          <Grid
-            item
-            className="col-span-12 flex flex-col items-center justify-center lg:col-span-6"
-          >
+          </div>
+          <div className=" flex flex-1 flex-col items-center justify-center ">
             <motion.div
               initial={{ x: 200, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               transition={{ duration: 1.2 }}
-              className="overflow-hidden rounded-md border-8"
+              className="flex w-full flex-col items-center justify-center sm:h-[450px] lg:w-[500px]"
             >
               <NextImage
                 priority
-                src={about}
-                alt="about"
+                src={about?.imageURL}
+                width={width > 390 ? 450 : 320}
+                height={width > 390 ? 450 : 320}
                 layout="fixed"
-                width={400}
-                height={500}
+                alt="profile image"
+                className="rounded-md"
                 objectFit="cover"
                 quality={NEXT_IMAGE_QUALITY}
               />
             </motion.div>
-          </Grid>
-        </Grid>
+          </div>
+        </div>
       </Container>
     </section>
   );

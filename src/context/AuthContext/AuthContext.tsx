@@ -22,7 +22,11 @@ export const AuthContextProvider: React.FC<PropsWithChildren> = ({
   React.useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        setUser(user);
+        setUser({
+          id: user.uid,
+          displayName: user.displayName,
+          email: user.email,
+        });
       } else {
         setUser(null);
       }

@@ -1,20 +1,24 @@
 import { NEXT_IMAGE_QUALITY } from "@config/app";
 import Button from "@ui/Button";
 import Container from "@ui/Container";
-import Grid from "@ui/Grid";
 import Typography from "@ui/Typography";
 import NextImage from "next/legacy/image";
 import NextLink from "next/link";
 import React from "react";
-import profile from "../../../public/assets/profile/profile-image.jpeg";
 import { motion } from "framer-motion";
+import { HeroDataType } from "src/types/dataTypes";
+import { useWindowSize } from "react-use";
 
-const HeroBanner = () => {
+interface Props {
+  banner: HeroDataType;
+}
+const HeroBanner = ({ banner }: Props) => {
+  const { width } = useWindowSize();
   return (
-    <section className="pt-60">
+    <section className="overflow-x-hidden pt-60">
       <Container>
-        <Grid container className="gap-6">
-          <Grid item className="col-span-12 lg:col-span-6">
+        <div className="flex flex-col justify-between  gap-6 lg:flex-row">
+          <div className="w-full lg:w-[55%]">
             <motion.div
               initial={{ x: -200, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
@@ -30,20 +34,17 @@ const HeroBanner = () => {
                 Hi, I'm{" "}
                 <span className=" bg-gradient-to-r from-[#619BFD] to-[#A17CF9] bg-clip-text text-transparent">
                   {" "}
-                  Aung Nyein Htet
+                  {banner?.name}
                 </span>
               </Typography>
               <Typography
                 variant="h1"
                 className="mt-6 bg-gradient-to-r from-[#619BFD] to-[#A17CF9] bg-clip-text  text-transparent"
               >
-                A Front-End Web Developer
+                {banner?.position}
               </Typography>
               <Typography className="mt-4 text-lg  text-SECONDARY_COLOR">
-                I'm a front-end developer specializing in building (and
-                occasionally designing) exceptional digital
-                experiences.Currently,I'm focused on building responsive
-                front-end web applications while learning back-end technologies.
+                {banner?.description}
               </Typography>
               <NextLink href={`/`} download>
                 <Button
@@ -54,29 +55,28 @@ const HeroBanner = () => {
                 </Button>
               </NextLink>
             </motion.div>
-          </Grid>
-          <Grid
-            item
-            className="col-span-12 flex flex-col items-center justify-center lg:col-span-6"
-          >
+          </div>
+          <div className="flex flex-1 flex-col items-center justify-center">
             <motion.div
               initial={{ x: 200, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               transition={{ duration: 1 }}
+              className=" flex w-full flex-col items-center justify-center sm:h-[450px] lg:w-[500px]"
             >
               <NextImage
-                src={profile}
-                width={450}
-                height={450}
+                src={banner?.imageURL}
+                width={width > 390 ? 450 : 320}
+                height={width > 390 ? 450 : 320}
                 layout="fixed"
                 alt="profile image"
-                className="rounded-full"
+                className="h-full w-full rounded-full"
                 priority
+                objectFit="cover"
                 quality={NEXT_IMAGE_QUALITY}
               />
             </motion.div>
-          </Grid>
-        </Grid>
+          </div>
+        </div>
       </Container>
     </section>
   );

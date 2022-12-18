@@ -7,16 +7,18 @@ import Typography from "@ui/Typography";
 import NextImage from "next/legacy/image";
 import NextLink from "next/link";
 import React from "react";
-import img from "../../../public/assets/contact/contact.jpg";
 import github from "../../../public/assets/skills/github.png";
 import facebook from "../../../public/assets/skills/facebook.jpg";
-import TextField from "@ui/TextField";
 import { motion } from "framer-motion";
-import TextAreaField from "@ui/TextAreaField";
+import { contactDataType } from "src/types/dataTypes";
+import ContactForm from "@components/ContactForm";
 
-const ContactSection = () => {
+interface Props {
+  contact: contactDataType;
+}
+const ContactSection = ({ contact }: Props) => {
   return (
-    <section className="py-32" id="contact">
+    <section className="overflow-x-hidden py-32 " id="contact">
       <Container>
         <Title title="contact" text="get in touch" />
         <Grid container className="gap-6">
@@ -25,29 +27,30 @@ const ContactSection = () => {
               initial={{ x: -100, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               transition={{ duration: 1.2 }}
-              className="flex flex-col justify-between rounded bg-SECONDARY_BG p-6"
+              className="flex h-full w-full flex-col justify-between rounded bg-SECONDARY_BG p-6"
             >
               <NextImage
-                src={img}
+                src={contact?.imageURL}
                 alt="contact"
-                objectFit="cover"
                 quality={NEXT_IMAGE_QUALITY}
-                height={400}
-                className="w-full rounded"
+                layout="responsive"
+                width={460}
+                objectFit="cover"
+                height={260}
+                className="rounded"
                 priority
               />
               <Typography
                 variant="h3"
-                className="my-3 bg-gradient-to-r from-[#619BFD] to-[#A17CF9] bg-clip-text font-bold  text-transparent"
+                className=" bg-gradient-to-r from-[#619BFD] to-[#A17CF9] bg-clip-text font-bold  text-transparent"
               >
-                Aung Nyein Htet
+                {contact?.name}
               </Typography>
               <Typography variant="h5" className="text-white">
-                Front-End Developer
+                {contact?.position}
               </Typography>
-              <Typography className="mt-3 text-lg text-SECONDARY_COLOR">
-                I am available for freelance or full-time positions.Contact me
-                and let's talk
+              <Typography className="text-lg text-SECONDARY_COLOR">
+                {contact?.description}
               </Typography>
 
               <div className="mt-8">
@@ -93,70 +96,7 @@ const ContactSection = () => {
             </motion.div>
           </Grid>
           <Grid item className="col-span-12 lg:col-span-7">
-            <motion.div
-              initial={{ x: 100, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              transition={{ duration: 1.2 }}
-              className="h-full rounded bg-SECONDARY_BG p-6 "
-            >
-              <form className="flex flex-col gap-6">
-                <Grid container className="gap-4">
-                  <Grid item className="col-span-12 lg:col-span-6">
-                    <div>
-                      <Typography
-                        variant="h5"
-                        className="mb-2 uppercase text-SECONDARY_COLOR"
-                      >
-                        Name
-                      </Typography>
-                      <TextField fullWidth type={"text"} placeholder="Name" />
-                    </div>
-                  </Grid>
-                  <Grid item className="col-span-12 lg:col-span-6">
-                    <div>
-                      <Typography
-                        variant="h5"
-                        className="mb-2 uppercase text-SECONDARY_COLOR"
-                      >
-                        Phone Number
-                      </Typography>
-                      <TextField
-                        fullWidth
-                        type={"tel"}
-                        placeholder="Phone Number"
-                      />
-                    </div>
-                  </Grid>
-                </Grid>
-                <div>
-                  <Typography
-                    variant="h5"
-                    className="mb-2 uppercase text-SECONDARY_COLOR"
-                  >
-                    Email
-                  </Typography>
-                  <TextField fullWidth type={"email"} placeholder="Email" />
-                </div>
-                <div>
-                  <Typography
-                    variant="h5"
-                    className="mb-2 uppercase text-SECONDARY_COLOR"
-                  >
-                    Subject
-                  </Typography>
-                  <TextField fullWidth type={"text"} placeholder="Subject" />
-                </div>
-                <div>
-                  <Typography
-                    variant="h5"
-                    className="mb-2 uppercase text-SECONDARY_COLOR"
-                  >
-                    Message
-                  </Typography>
-                  <TextAreaField placeholder="Message" />
-                </div>
-              </form>
-            </motion.div>
+            <ContactForm />
           </Grid>
         </Grid>
       </Container>

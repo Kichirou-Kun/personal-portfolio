@@ -1,16 +1,18 @@
-import Box from "@ui/Box";
 import Container from "@ui/Container";
-import Grid from "@ui/Grid";
 import Typography from "@ui/Typography";
 import UserTable from "../UserTable";
 import React from "react";
 import ContactMessage from "./ContactMessage";
+import { userContactType } from "src/types/dataTypes";
 
-const Dashboard = () => {
+interface Props {
+  messages: userContactType[];
+}
+const Dashboard = ({ messages }: Props) => {
   return (
     <section className="mt-[120px] h-full bg-BODY_BG">
       <Container className="flex flex-col gap-10">
-        <div className="flex flex-col">
+        {/* <div className="flex flex-col">
           <Typography variant="h3" className="mb-2 text-SECONDARY_COLOR">
             Dashboard
           </Typography>
@@ -68,12 +70,12 @@ const Dashboard = () => {
               </Box>
             </Grid>
           </Grid>
-        </div>
+        </div> */}
         <div className="flex flex-col ">
           <Typography variant="h3" className="mb-2 text-SECONDARY_COLOR">
             Contact Messages
           </Typography>
-          <ContactMessage />
+          {messages && <ContactMessage messages={messages} />}
         </div>
         <UserTable />
       </Container>
