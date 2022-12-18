@@ -13,9 +13,9 @@ import TextField from "@ui/TextField";
 import Typography from "@ui/Typography";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { HeroDataType } from "src/types/heroType";
 import { uploadImage } from "@utils/uploadImage";
 import { deleteImages } from "@utils/deleteImage";
+import { HeroDataType } from "src/types/dataTypes";
 
 interface FormValues {
   name: string;

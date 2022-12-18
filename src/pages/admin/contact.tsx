@@ -12,10 +12,11 @@ import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { deleteImages } from "@utils/deleteImage";
 import { uploadImage } from "@utils/uploadImage";
-import { HeroDataType } from "src/types/heroType";
+
 import { saveContactPost } from "@lib/saveContactPost";
 import IconButton from "@ui/IconButton";
 import { TrashIcon } from "@heroicons/react/24/solid";
+import { HeroDataType } from "src/types/dataTypes";
 
 interface FormValues {
   name: string;
